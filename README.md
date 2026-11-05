@@ -17,6 +17,18 @@ procesan temporalmente en memoria y permanecen visibles en el navegador hasta
 reemplazarlos o cerrar la página. Esto no constituye una garantía sobre los
 registros del proveedor que aloje el servicio.
 
+## Ejecutar con los pesos entrenados
+
+Después de clonar este repositorio, instala Git LFS, descarga los pesos e inicia la aplicación. El lanzador elige M1 al inicio y permite usar M0 a M3 sin entrenar de nuevo.
+
+```text
+git lfs pull
+python -m pip install -r requirements.txt
+python iniciar_con_modelos.py
+```
+
+Los cuatro archivos de pesos se identifican por SHA-256 en `checkpoint_manifest.json`. Los pesos de M0 proceden de [pysentimiento](https://huggingface.co/pysentimiento/robertuito-sentiment-analysis), revisión `a2cc0f67ebd705c55191e25a05ba23d885fcc09b`. Las fichas de M1 a M3 se encuentran en `modelos/`.
+
 ## Modelos y alcance
 
 | Modelo | Procedencia | Exactitud histórica (100 textos) | F1 macro |
