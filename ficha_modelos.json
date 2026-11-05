@@ -1,0 +1,30 @@
+{
+  "objetivo": "Desarrollar un modelo computacional basado en Procesamiento del Lenguaje Natural y aprendizaje automático que permita detectar y clasificar la polaridad de los estados emocionales presentes en publicaciones digitales de jóvenes bolivianos",
+  "objetivo_fuente": "capítulo IV, versión 52, sección 4.2.1. El perfil conservado usa «identificar» en vez de «detectar»; esta discrepancia sigue pendiente de decisión académica.",
+  "aviso_checkpoint": "M2 y M3 conservan pesos de entrenamientos históricos sin preprocess_tweet durante el entrenamiento. Las carpetas finales son copias consolidadas; no son reentrenamientos corregidos. La inferencia de los cuatro modelos sí aplica preprocess_tweet en español.",
+  "resultados_prueba": [
+    {
+      "modelo": "M0",
+      "exactitud_pct": 70,
+      "f1_macro": 0.600826816552623
+    },
+    {
+      "modelo": "M1",
+      "exactitud_pct": 76,
+      "f1_macro": 0.6645584045584046
+    },
+    {
+      "modelo": "M2",
+      "exactitud_pct": 63,
+      "f1_macro": 0.5185897435897435
+    },
+    {
+      "modelo": "M3",
+      "exactitud_pct": 64,
+      "f1_macro": 0.5268188900874985
+    }
+  ],
+  "resultados_fuente": "Resultados históricos de la prueba de 100 textos, cuadernos oficiales 08 y 11; coinciden al redondeo con la Tabla 4.11 del capítulo IV versión 52. La aplicación no recalcula esas métricas.",
+  "seleccion": "M3 fue seleccionado entre las dos adaptaciones locales M2 y M3 por F1 macro de validación (0,8037751). M1 obtuvo mayor exactitud en prueba (76 %); ese resultado no sustituye el criterio de selección. DEFAULT_MODEL permite cambiar el modelo inicial.",
+  "estado_publicacion": "Aplicación preparada y comprobada localmente. La publicación en Hugging Face Spaces y el acceso a repositorios privados requieren verificar cuenta, permisos, licencias y alojamiento. No hay una URL pública verificada en esta entrega."
+}

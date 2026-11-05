@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!*.example
+config_local.json
+*.log
+flagged/
+.gradio/
+.cache/
+evidencias_locales/
+modelos_exportados/
+*.safetensors
+*.bin
+*.csv
+*.parquet
+*.ipynb
+
+# Cuadernos de consulta de la entrega
+!notebooks/*.ipynb
