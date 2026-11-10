@@ -14,6 +14,10 @@ corrida con fecha. Cada cuaderno numerado también puede abrirse por separado.
 Los corpus, las etiquetas por publicación y las predicciones individuales
 se consultan desde la copia de trabajo autorizada.
 
+Abre [10_PROBAR_APLICATIVO.ipynb](10_PROBAR_APLICATIVO.ipynb) en Colab para
+escribir un texto y probar M2 o comparar los tres modelos con los pesos
+publicados. También puedes abrir Gradio dentro del cuaderno.
+
 ## Ejecutar Gradio
 
 En un entorno con Python y Git LFS, instala las dependencias con
@@ -29,6 +33,7 @@ La variable `TESIS_VARIANTE=m2` activa la edición de un solo modelo.
 | OE3, ajustar modelos | Cuadernos 06–08 y `entrenamiento.py`. M0 es la referencia publicada. M1 se ajustó con 9.336 registros peruanos y M2 se ajustó a partir de M1 con 1.809 publicaciones bolivianas. Ambos ajustes completaron tres épocas. |
 | OE4, evaluar | Cuaderno 09 y `evaluar.py`. Los gráficos en `evaluacion/corrida_03_epocas/figuras` corresponden a la evaluación interna de 454 publicaciones y al seguimiento de los dos ajustes. |
 | OE5, demostrar la aplicación | `aplicativo/app.py` y `nucleo.py`. El aplicativo muestra la polaridad de un texto y sus probabilidades. Emplea tramos de 128 tokens con solapamiento de 32 y promedia las probabilidades. |
+| OE5, probar desde Colab | `10_PROBAR_APLICATIVO.ipynb`, celdas 1–3. Descarga los pesos de `corrida_03_epocas`, pasa el texto ingresado a `nucleo.predecir` y presenta una tabla de probabilidades. La celda 3 abre el mismo `aplicativo/app.py`. |
 
 El alcance académico se documentó en el marco introductorio de trabajo,
 §§ 1.4–1.5, y el marco aplicativo v56, con los criterios de trazabilidad de
