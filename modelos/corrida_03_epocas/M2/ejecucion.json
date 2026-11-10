@@ -1,0 +1,58 @@
+{
+  "modelo": "M2",
+  "operacion": "ajuste supervisado",
+  "inicializacion": "M1",
+  "pesos_origen_sha256": "e915b5e22db31d83928478db08a9b002418a3e6e2a03245c846724cc4e90d0b8",
+  "datos": {
+    "corpus": "Bolivia, anotación humana v5 de Telegram y Facebook",
+    "particion": "entrenamiento",
+    "archivos_sha256": {
+      "TABLAS/06_clasificacion/clasificacion_asistida_v5_etiquetada.xlsx": "b97a27c7c1e74fdbc5264eb09a5832717c8a27236cfbcff32cb9990e2cf97096",
+      "insumos/particion_boliviana.xlsx": "98005b919e52f65d01aad7c5775ca3fe2a51d3d14018d370f1cab4b0f20b3c16"
+    },
+    "excluidos_etiqueta_invalida": 284,
+    "reservados_validacion": 454,
+    "filas": 1809,
+    "por_clase": {
+      "NEG": 1299,
+      "NEU": 374,
+      "POS": 136
+    },
+    "repeticiones_texto_antes": 5,
+    "repeticiones_texto_preparado": 5,
+    "filas_truncadas": 419
+  },
+  "clases": {
+    "0": "NEG",
+    "1": "NEU",
+    "2": "POS"
+  },
+  "preprocesador": "preprocess_tweet(lang='es')",
+  "max_tokens": 128,
+  "semilla": 42,
+  "gpu": "NVIDIA GeForce RTX 4060",
+  "bf16": true,
+  "epocas": 3,
+  "lote": 16,
+  "tasa_aprendizaje": 2e-05,
+  "optimizador": "adamw_torch",
+  "programador": "linear",
+  "orden_por_longitud": true,
+  "funcion_perdida": "entropía cruzada sin ponderar",
+  "pasos_optimizacion": 342,
+  "segundos_entrenamiento": 28.6982,
+  "versiones": {
+    "torch": "2.10.0+cu128",
+    "transformers": "4.49.0",
+    "datasets": "4.8.5",
+    "accelerate": "1.15.0",
+    "pysentimiento": "0.7.3"
+  },
+  "artefactos_sha256": {
+    "config.json": "e59d42fae64745d3256cf29085e36d01fc2566bbfdc2653ad3ff60aef0e7ad4d",
+    "model.safetensors": "dcd35a93ce9e6f1754edaf4f101dc6f87e45ef94999a7af134c0d99cae762bf1",
+    "special_tokens_map.json": "edd71739099fe63dc2f70815facad5253c70ded0e0d4df49ef883ce4511af365",
+    "tokenizer.json": "41e1c038de097d81320b4d4844147fece321fe861fc5ce3c17afe4143dd85680",
+    "tokenizer_config.json": "54cacd20f433f4a092976e99d21a2610a9c0db6096887734e2b28768a5d4a483"
+  }
+}

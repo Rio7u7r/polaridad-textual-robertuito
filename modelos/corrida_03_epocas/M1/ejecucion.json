@@ -1,0 +1,55 @@
+{
+  "modelo": "M1",
+  "operacion": "ajuste supervisado",
+  "inicializacion": "M0",
+  "pesos_origen_sha256": "604359981dcfa50e502301033ab7ab170014f5604eacd09e4318f7b61d2a95a0",
+  "datos": {
+    "corpus": "pyupeu/social-media-peruvian-sentiment",
+    "revision": "29c842ea9e189e5865925ac0ef6cb01b1388f4b6",
+    "particion": "train",
+    "archivo": "insumos/smps_train.parquet",
+    "sha256": "cfcf7d4afba319fd27105c3a3de41f09b9d468a0b07737da0572715249d8bb2e",
+    "filas": 9336,
+    "por_clase": {
+      "NEG": 4265,
+      "POS": 3033,
+      "NEU": 2038
+    },
+    "repeticiones_texto_antes": 26,
+    "repeticiones_texto_preparado": 27,
+    "filas_truncadas": 414
+  },
+  "clases": {
+    "0": "NEG",
+    "1": "NEU",
+    "2": "POS"
+  },
+  "preprocesador": "preprocess_tweet(lang='es')",
+  "max_tokens": 128,
+  "semilla": 42,
+  "gpu": "NVIDIA GeForce RTX 4060",
+  "bf16": true,
+  "epocas": 3,
+  "lote": 16,
+  "tasa_aprendizaje": 2e-05,
+  "optimizador": "adamw_torch",
+  "programador": "linear",
+  "orden_por_longitud": true,
+  "funcion_perdida": "entropía cruzada sin ponderar",
+  "pasos_optimizacion": 1752,
+  "segundos_entrenamiento": 128.4713,
+  "versiones": {
+    "torch": "2.10.0+cu128",
+    "transformers": "4.49.0",
+    "datasets": "4.8.5",
+    "accelerate": "1.15.0",
+    "pysentimiento": "0.7.3"
+  },
+  "artefactos_sha256": {
+    "config.json": "7800648b712c9174c78697af6fb5c912792ac4dfc76fa007235b3bf7239b9e2c",
+    "model.safetensors": "e915b5e22db31d83928478db08a9b002418a3e6e2a03245c846724cc4e90d0b8",
+    "special_tokens_map.json": "edd71739099fe63dc2f70815facad5253c70ded0e0d4df49ef883ce4511af365",
+    "tokenizer.json": "41e1c038de097d81320b4d4844147fece321fe861fc5ce3c17afe4143dd85680",
+    "tokenizer_config.json": "54cacd20f433f4a092976e99d21a2610a9c0db6096887734e2b28768a5d4a483"
+  }
+}

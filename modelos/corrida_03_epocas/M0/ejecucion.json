@@ -1,0 +1,28 @@
+{
+  "modelo": "M0",
+  "operacion": "copia del clasificador publicado, sin ajuste local",
+  "origen": "pysentimiento/robertuito-sentiment-analysis",
+  "revision": "a2cc0f67ebd705c55191e25a05ba23d885fcc09b",
+  "pesos_origen_sha256": "dd3826c93c1fb39e3aca178e133ec8de9e10cb800d00feea68431e70e677a1ed",
+  "clases": {
+    "0": "NEG",
+    "1": "NEU",
+    "2": "POS"
+  },
+  "preprocesador": "preprocess_tweet(lang='es')",
+  "pasos_optimizacion": 0,
+  "versiones": {
+    "torch": "2.10.0+cu128",
+    "transformers": "4.49.0",
+    "datasets": "4.8.5",
+    "accelerate": "1.15.0",
+    "pysentimiento": "0.7.3"
+  },
+  "artefactos_sha256": {
+    "config.json": "04d890b47b185d2cfbc8259ff61b7db9b836087c118e5b81b68d0bcea382992b",
+    "model.safetensors": "604359981dcfa50e502301033ab7ab170014f5604eacd09e4318f7b61d2a95a0",
+    "special_tokens_map.json": "edd71739099fe63dc2f70815facad5253c70ded0e0d4df49ef883ce4511af365",
+    "tokenizer.json": "41e1c038de097d81320b4d4844147fece321fe861fc5ce3c17afe4143dd85680",
+    "tokenizer_config.json": "54cacd20f433f4a092976e99d21a2610a9c0db6096887734e2b28768a5d4a483"
+  }
+}

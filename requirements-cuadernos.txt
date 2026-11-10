@@ -1,0 +1,13 @@
+transformers==4.49.0
+huggingface-hub==0.36.2
+pysentimiento==0.7.3
+datasets==4.8.5
+accelerate==1.15.0
+pandas>=2.2,<4
+openpyxl==3.1.5
+pyarrow>=19
+scikit-learn>=1.4,<2
+matplotlib>=3.8,<4
+nbformat>=5.10,<6
+nbclient>=0.10,<1
+ipykernel>=6,<8

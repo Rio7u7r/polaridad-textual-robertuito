@@ -1,0 +1,24 @@
+{
+  "corrida": "corrida_03_epocas",
+  "objetivo_fuente": "Marco introductorio de trabajo, §1.4.1.",
+  "aviso_checkpoint": "M0 usa los pesos publicados. M1 y M2 completaron tres épocas por etapa.",
+  "resultados_prueba": [
+    {
+      "modelo": "M0",
+      "exactitud_pct": 79.95594713656388,
+      "f1_macro": 0.6385599999576396
+    },
+    {
+      "modelo": "M1",
+      "exactitud_pct": 76.2114537444934,
+      "f1_macro": 0.637144496597598
+    },
+    {
+      "modelo": "M2",
+      "exactitud_pct": 88.32599118942731,
+      "f1_macro": 0.7760889305596502
+    }
+  ],
+  "resultados_fuente": "Fuente. Cuaderno 09, corrida de tres épocas y 454 publicaciones con etiqueta humana.",
+  "seleccion": "M2 es el modelo inicial. Puedes elegir M0 o M1 para clasificar o comparar."
+}
