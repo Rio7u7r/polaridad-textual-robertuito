@@ -10,9 +10,14 @@ from ipykernel.kernelspec import install
 from nbclient import NotebookClient
 from jupyter_client import KernelManager
 from jupyter_client.kernelspec import KernelSpecManager
+from gestion_modelos import preguntar_modelo
 
 
-def ejecutar(salida):
+def ejecutar(salida, respuestas=None, entrenar=False):
+    if not entrenar:
+        if respuestas and any(respuesta != "si" for respuesta in respuestas):
+            raise ValueError("Para solicitar modelos nuevos, activa --entrenar.")
+        respuestas = ["si", "si", "si"]
     raiz = Path(__file__).resolve().parent
     salida = salida or raiz / "salidas" / datetime.now().strftime("%Y%m%d_%H%M%S_%f")
     salida = salida.resolve()
@@ -27,11 +32,16 @@ def ejecutar(salida):
     kernel = "tesis-portatil"
     entorno = {**os.environ, "TESIS_SALIDAS": str(salida),
                "PYTHONDONTWRITEBYTECODE": "1", "TOKENIZERS_PARALLELISM": "false",
-               "HF_HUB_OFFLINE": "1", "HF_DATASETS_OFFLINE": "1"}
+               "TESIS_PERMITIR_ENTRENAMIENTO": "1" if entrenar else "0"}
     with TemporaryDirectory() as temporal:
         spec = Path(install(prefix=temporal, kernel_name=kernel, display_name="Tesis portátil"))
         gestor = KernelSpecManager(kernel_dirs=[str(spec.parent)])
         for ruta in notebooks:
+            if ruta.name[:2] in ("06", "07", "08"):
+                modelo = {"06": "M0", "07": "M1", "08": "M2"}[ruta.name[:2]]
+                respuesta = respuestas[int(ruta.name[:2]) - 6] if respuestas else None
+                cargar = preguntar_modelo(raiz, modelo, respuesta=respuesta, permitir_preparacion=entrenar)
+                entorno[f"TESIS_RESPUESTA_{modelo}"] = "si" if cargar else "no"
             print(f"Ejecutando {ruta.name}", flush=True)
             cuaderno = nbformat.read(ruta, as_version=4)
             try:
@@ -46,4 +56,7 @@ def ejecutar(salida):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--salida", type=Path)
-    ejecutar(parser.parse_args().salida)
+    parser.add_argument("--respuestas", nargs=3, choices=("si", "no"), metavar=("M0", "M1", "M2"))
+    parser.add_argument("--entrenar", action="store_true")
+    argumentos = parser.parse_args()
+    ejecutar(argumentos.salida, argumentos.respuestas, argumentos.entrenar)

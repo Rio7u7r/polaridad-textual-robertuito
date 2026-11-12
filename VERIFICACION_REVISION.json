@@ -1,0 +1,15 @@
+{
+  "fecha": "2026-11-11",
+  "secuencia": "00–09",
+  "prueba": "Secuencia ejecutada con kernels Jupyter. Se bloquearon Trainer.train, las funciones de ajuste, las llamadas de modelos y input. La secuencia completó la revisión con los datos guardados.",
+  "aciertos": {
+    "M0": 363,
+    "M1": 346,
+    "M2": 401
+  },
+  "evaluaciones": "454 predicciones guardadas por modelo, copiadas sin cambios",
+  "entrenamiento_nuevo": false,
+  "predicciones_nuevas_en_00_09": false,
+  "salidas_originales": "104 salidas conservadas en los cuadernos de Colab entregados",
+  "alcance": "La preparación 00–04 se ejecuta. El cuaderno 10 ejecuta inferencia cuando se solicita probar un texto."
+}

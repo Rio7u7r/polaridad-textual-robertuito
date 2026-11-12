@@ -78,6 +78,26 @@ def preparar_m0(destino):
     if destino.exists():
         raise FileExistsError(destino)
     origen = destino.parents[1] / "corrida_03_epocas/M0"
+    if not (origen / "ejecucion.json").is_file():
+        from huggingface_hub import snapshot_download
+
+        publicado = Path(snapshot_download(
+            BASE, revision=REVISION, token=False,
+            allow_patterns=["config.json", "model.safetensors", "tokenizer.json",
+                            "tokenizer_config.json", "special_tokens_map.json"],
+        ))
+        modelo, tokenizer = cargar_modelo(publicado)
+        guardar(modelo, tokenizer, destino, {
+            "modelo": "M0",
+            "operacion": "copia del clasificador publicado, sin ajuste local",
+            "origen": BASE,
+            "revision": REVISION,
+            "pesos_origen_sha256": sha256(publicado / "model.safetensors"),
+            "clases": CLASES,
+            "preprocesador": "preprocess_tweet(lang='es')",
+            "pasos_optimizacion": 0,
+        })
+        return
     registro = json.loads((origen / "ejecucion.json").read_text(encoding="utf-8"))
     if registro["modelo"] != "M0" or registro["revision"] != REVISION or any(
         sha256(origen / nombre) != huella
@@ -165,7 +185,9 @@ def codificar(datos, tokenizer):
     }
 
 
-def ajustar(nombre, origen, destino, datos, evidencia, *, epocas):
+def ajustar(nombre, origen, destino, datos, evidencia, *, epocas, permitir=False):
+    if not permitir:
+        raise RuntimeError("El entrenamiento requiere activar ENTRENAR_MODELO explícitamente.")
     if destino.exists():
         raise FileExistsError(destino)
     if not torch.cuda.is_available():

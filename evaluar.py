@@ -1,6 +1,7 @@
 """Evaluación de los modelos guardados en la partición boliviana de 454 filas."""
 
 import json
+from shutil import copyfile
 
 import pandas as pd
 import torch
@@ -49,7 +50,7 @@ def predecir(textos, modelo, tokenizer, dispositivo):
     return predicciones
 
 
-def evaluar_modelo(raiz, corrida, nombre, *, directorio_evaluacion=None):
+def evaluar_modelo(raiz, corrida, nombre, *, directorio_evaluacion=None, recalcular=False):
     particion = raiz / "insumos/particion_boliviana.xlsx"
     carpeta = raiz / "modelos" / corrida / nombre
     manifiesto = json.loads((carpeta / "ejecucion.json").read_text(encoding="utf-8"))
@@ -60,6 +61,29 @@ def evaluar_modelo(raiz, corrida, nombre, *, directorio_evaluacion=None):
         raise ValueError(f"Los archivos guardados no coinciden con el manifiesto de {nombre}.")
 
     prueba = leer_particion(particion)
+    if not recalcular:
+        archivo = raiz / "evaluacion" / corrida / f"{nombre}.json"
+        if not archivo.is_file():
+            raise FileNotFoundError(f"Falta la evaluación guardada de {nombre}. Restaura la copia o activa RECALCULAR_EVALUACION.")
+        evidencia = json.loads(archivo.read_text(encoding="utf-8"))
+        if (evidencia["modelo"], evidencia["corrida"], evidencia["subconjunto"],
+            evidencia["pesos_sha256"], evidencia["particion_sha256"],
+            evidencia["max_tokens"], evidencia["solapamiento"]) != (
+                nombre, corrida, "validacion", huellas["model.safetensors"], sha256(particion),
+                MAX_TOKENS, SOLAPAMIENTO):
+            raise ValueError(f"La evaluación guardada de {nombre} difiere de esta corrida.")
+        filas = pd.DataFrame(evidencia["predicciones"])
+        referencia = prueba.set_index("id")["etiqueta_humana"].sort_index()
+        if (not filas["id"].is_unique or
+            not filas.set_index("id")["referencia"].sort_index().equals(referencia) or
+            not set(filas["prediccion"]) <= set(CLASES)):
+            raise ValueError(f"Las referencias guardadas de {nombre} difieren de la partición.")
+        salida = (directorio_evaluacion or raiz / "evaluacion") / corrida / f"{nombre}.json"
+        if salida.resolve() != archivo.resolve():
+            salida.parent.mkdir(parents=True, exist_ok=True)
+            copyfile(archivo, salida)
+        print(f"{nombre}: se reutilizan las {len(filas)} predicciones de evaluación guardadas.")
+        return filas
     dispositivo = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     modelo, tokenizer = cargar_modelo(carpeta)
     modelo.to(dispositivo).eval()

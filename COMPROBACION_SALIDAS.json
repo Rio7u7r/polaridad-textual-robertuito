@@ -1,0 +1,52 @@
+{
+  "00_recoleccion_telegram.ipynb": {
+    "origen": "C:/Users/pc1/Desktop/Tesis_RoBERTuito_M0_M1_M2/salidas/20261109_150307_306459/cuadernos/00_recoleccion_telegram.ipynb",
+    "salidas": 1,
+    "sha256_salidas": "2787f92caf18d945a65b083b98fd8b83bffc9a25d8e6baa4d6feea4e1b59b3e9"
+  },
+  "01_integracion_datos.ipynb": {
+    "origen": "C:/Users/pc1/Desktop/Tesis_RoBERTuito_M0_M1_M2/salidas/20261109_150307_306459/cuadernos/01_integracion_datos.ipynb",
+    "salidas": 6,
+    "sha256_salidas": "3143e7bceda23a061971abaf2786d7ba1174f7b37df0bee347d387a893ec91df"
+  },
+  "02_exploracion_datos.ipynb": {
+    "origen": "C:/Users/pc1/Desktop/Tesis_RoBERTuito_M0_M1_M2/salidas/20261109_150307_306459/cuadernos/02_exploracion_datos.ipynb",
+    "salidas": 8,
+    "sha256_salidas": "5fc6b96820b985f6f5bf35f238b6840a15bbbbffde6c32614b202abb9e3ebc4b"
+  },
+  "03_limpieza_datos.ipynb": {
+    "origen": "C:/Users/pc1/Desktop/Tesis_RoBERTuito_M0_M1_M2/salidas/20261109_150307_306459/cuadernos/03_limpieza_datos.ipynb",
+    "salidas": 13,
+    "sha256_salidas": "fb32bb6c980e708cb31a97899d320c5f56a35b98b89e148375c2478256fa85e9"
+  },
+  "04_preprocesamiento_texto.ipynb": {
+    "origen": "C:/Users/pc1/Desktop/Tesis_RoBERTuito_M0_M1_M2/salidas/20261109_150307_306459/cuadernos/04_preprocesamiento_texto.ipynb",
+    "salidas": 12,
+    "sha256_salidas": "1c53ec8eb077ef1f67a345fd359970d4dcd48ff1f00258a1868f459fb1be4c5b"
+  },
+  "05_clasificacion_asistida.ipynb": {
+    "origen": "C:/Users/pc1/Desktop/Tesis_RoBERTuito_M0_M1_M2/salidas/20261109_150307_306459/cuadernos/05_clasificacion_asistida.ipynb",
+    "salidas": 3,
+    "sha256_salidas": "30525fc4946a3fe8fe80e588e1252b164839e1247eebc45c4e6647d344cfc53a"
+  },
+  "06_M0_base.ipynb": {
+    "origen": "output/Presentacion_RoBERTuito_3_epocas/06_M0_base.ipynb",
+    "salidas": 4,
+    "sha256_salidas": "c69ecb9a35f3230279fdb2789c891b201f57f729a15ec6c962d48589bf94ab24"
+  },
+  "07_M1_corpus_peruano.ipynb": {
+    "origen": "output/Presentacion_RoBERTuito_3_epocas/07_M1_corpus_peruano.ipynb",
+    "salidas": 41,
+    "sha256_salidas": "09baeaec8205a689dc93a0a05c0b14002a215e1fa368305f53784f221f609754"
+  },
+  "08_M2_corpus_boliviano.ipynb": {
+    "origen": "output/Presentacion_RoBERTuito_3_epocas/08_M2_corpus_boliviano.ipynb",
+    "salidas": 13,
+    "sha256_salidas": "563b77d87ef31440b55788bcaeb3051786caa75452241fac794e7a9b5b56b9cb"
+  },
+  "09_comparacion_modelos.ipynb": {
+    "origen": "output/Presentacion_RoBERTuito_3_epocas/09_comparacion_modelos.ipynb",
+    "salidas": 3,
+    "sha256_salidas": "50bb85d0c783bf6f3834b8be7392939dfddefcf69c6fd51cb774301f16d0c1f9"
+  }
+}

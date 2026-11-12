@@ -198,19 +198,23 @@ class RecursosLocales:
         return await self.app(scope, receive, enviar)
 
 
-def iniciar():
+def iniciar(compartir=False):
     construir_app().launch(
         server_name="0.0.0.0" if os.getenv("SPACE_ID") else "127.0.0.1",
         server_port=int(os.getenv("GRADIO_SERVER_PORT", "7860")),
-        share=False,
+        share=compartir,
         inbrowser=os.getenv("TESIS_ABRIR_NAVEGADOR") == "1",
         show_error=False,
         show_api=False,
-        quiet=True,
+        quiet=not compartir,
         ssr_mode=False,
         app_kwargs={"middleware": [Middleware(RecursosLocales)]},
     )
 
 
 if __name__ == "__main__":
-    iniciar()
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--compartir", action="store_true", help="Genera un enlace público temporal de Gradio.")
+    iniciar(compartir=parser.parse_args().compartir)
